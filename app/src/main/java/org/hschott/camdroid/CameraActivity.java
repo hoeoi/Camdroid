@@ -18,7 +18,12 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import com.hoeoi.lgbTrack.LgbTrack;
+import com.hoeoi.lgbTrack.TrackView;
 
 import org.hschott.camdroid.util.StorageUtils;
 
@@ -30,7 +35,7 @@ import java.util.Locale;
 public class CameraActivity extends Activity {
     private CameraPreviewView mPreview;
     private ProcessFramesView mProcessorView;
-
+    private LgbTrack lgbTrack;
     private SimpleDateFormat sdf = new SimpleDateFormat(
             "yyyy-MM-dd_HH-mm-ss-SS", Locale.US);
 
@@ -129,12 +134,12 @@ public class CameraActivity extends Activity {
                 });
 
         View configUi = this.findViewById(R.id.configcontainer);
-        configUi.setOnTouchListener(new View.OnTouchListener() {
+        /*configUi.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 return gesture.onTouchEvent(event);
             }
-        });
+        });*/
 
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
@@ -152,6 +157,11 @@ public class CameraActivity extends Activity {
 
         StorageUtils.exportRaw(getApplicationContext(), new File(Environment.getExternalStorageDirectory(), "tessdata"),
                 TESSERACT_LANG_FROM_ID, TESSERACT_LANG_TO_PATH);
+
+        ViewGroup frameLayout = (ViewGroup)this.findViewById(R.id.frameLayout);
+
+        lgbTrack = new LgbTrack(frameLayout);
+
 
     }
 
@@ -322,4 +332,5 @@ public class CameraActivity extends Activity {
         this.mPreview.takePicture(callback);
 
     }
+
 }

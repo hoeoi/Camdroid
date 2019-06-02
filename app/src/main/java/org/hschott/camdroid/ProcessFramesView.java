@@ -11,6 +11,7 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -136,6 +137,7 @@ public class ProcessFramesView extends ViewGroup implements
 
         SurfaceHolder holder = view.getHolder();
         holder.addCallback(this);
+
     }
 
     @Override
@@ -290,4 +292,6 @@ public class ProcessFramesView extends ViewGroup implements
             }
         }
     }
+
+
 }

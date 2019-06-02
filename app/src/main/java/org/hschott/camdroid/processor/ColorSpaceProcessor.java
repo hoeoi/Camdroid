@@ -65,43 +65,7 @@ public class ColorSpaceProcessor extends AbstractOpenCVFrameProcessor {
         }
 
         protected void execute() {
-            switch (channel) {
-                case R.id.hsv:
-                    out = hsv();
-                    break;
-
-                case R.id.hue:
-                    out = split(hsv(), 0);
-                    break;
-
-                case R.id.saturation:
-                    out = split(hsv(), 1);
-                    break;
-
-                case R.id.value:
-                    out = split(hsv(), 2);
-                    break;
-
-                case R.id.rgb:
-                    out = rgb();
-                    break;
-
-                case R.id.red:
-                    out = split(rgb(), 0);
-                    break;
-
-                case R.id.green:
-                    out = split(rgb(), 1);
-                    break;
-
-                case R.id.blue:
-                    out = split(rgb(), 2);
-                    break;
-
-                default:
-                    out = hsv();
-                    break;
-            }
+            out = rgb();
         }
 
     }

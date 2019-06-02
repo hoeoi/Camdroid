@@ -11,6 +11,7 @@ import android.hardware.Camera.Size;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -283,6 +284,11 @@ public class CameraPreviewView extends ViewGroup implements PreviewCallback,
         if (this.mAutoFocusManager != null) {
             this.mAutoFocusManager.takePicture(callback);
         }
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return super.onTouchEvent(event);
     }
 
 }
