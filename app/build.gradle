@@ -9,6 +9,27 @@ android {
         targetSdkVersion 19
         versionCode 4
         versionName "2.1"
+        externalNativeBuild {
+            cmake {
+                cppFlags "-std=c++11 -frtti -fexceptions"
+            }
+        }
+        ndk {
+            abiFilters 'armeabi'
+        }
+    }
+    packagingOptions {
+        exclude 'lib/armeabi/liblgbTrack.so'
+    }
+    externalNativeBuild {
+        cmake {
+            path 'CMakeLists.txt'
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['../distribution/libs']
+        }
     }
     buildTypes {
         release {
