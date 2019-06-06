@@ -1,7 +1,7 @@
 cmake_minimum_required (VERSION 2.8)
 
-set(distribution_DIR ${CMAKE_SOURCE_DIR}/../distribution)
-set(pathToTrack ${CMAKE_SOURCE_DIR}/src/main/)
+set(distribution_DIR ${CMAKE_SOURCE_DIR}/src/main/jniLibs)
+set(mainPath ${CMAKE_SOURCE_DIR}/src/main/)
 set(sourcePath ${CMAKE_SOURCE_DIR}/src/main/lgbTrack)
 
 aux_source_directory (sourcePath SRC)
@@ -22,11 +22,8 @@ link_directories (  ${sourcePath}/lib/opencv/${ANDROID_ABI}
 add_library (lgbTrack
                 SHARED
                 ${sourcePath}/LGBTrack.cpp
-                ${sourcePath}/NativeTrack.cpp)
+                ${mainPath}/jni/lgbTrackJni.cpp)
 
-set_target_properties(lgbTrack PROPERTIES
-                      LIBRARY_OUTPUT_DIRECTORY
-                      ${distribution_DIR}/libs/${ANDROID_ABI})
 
 target_link_libraries (	lgbTrack 
 						kcf

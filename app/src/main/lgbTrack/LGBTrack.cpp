@@ -28,9 +28,9 @@ LGBTrack::LGBTrack(DidLossTargetCallback didLossTargetCallback,
     this->didUpdatedTargetRectFunc = didUpdatedTargetRectCallback;
     trackControl = trackControlInit(trackControlCallback);
     //创建线程
-    
+
     imageUpdateSem = false;
-    
+
     isProcessImageThreadOut = false;
     isCmtCheckThreadOut = false;
 
@@ -138,23 +138,23 @@ cv::Mat LGBTrack::getImage(){
     cv::Mat image ;
     int value = 0;
 
-    pthread_mutex_lock(&imageMutex);;
+    pthread_mutex_lock(&imageMutex);
     image = currentImage;
-    pthread_mutex_unlock(&imageMutex);;
+    pthread_mutex_unlock(&imageMutex);
     return image;
 }
 
 void LGBTrack::process(cv::Mat image){
-    if(!pthread_mutex_trylock(&imageMutex)){
+    if(0 != pthread_mutex_trylock(&imageMutex)){
         return;
     }
 
     cv::Mat imageResize,image2;
     cv::resize(image, imageResize, cv::Size(), image_scale, image_scale);
     
-    cvtColor(imageResize, image2, COLOR_BGRA2BGR);
+//    cvtColor(imageResize, image2, COLOR_BGRA2BGR);
     
-    currentImage = image2;
+    currentImage = imageResize;
     pthread_mutex_unlock(&imageMutex);;
     imageUpdateSem = true;
 }

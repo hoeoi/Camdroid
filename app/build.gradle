@@ -15,20 +15,13 @@ android {
             }
         }
         ndk {
-            abiFilters 'armeabi'
+            abiFilters 'armeabi' , 'armeabi-v7a'
         }
     }
-    packagingOptions {
-        exclude 'lib/armeabi/liblgbTrack.so'
-    }
+
     externalNativeBuild {
         cmake {
             path 'CMakeLists.txt'
-        }
-    }
-    sourceSets {
-        main {
-            jniLibs.srcDirs = ['../distribution/libs']
         }
     }
     buildTypes {

@@ -66,7 +66,6 @@ public class CameraActivity extends Activity {
             } else {
                 mSystemUIHandler.removeCallbacks(systemUIHideRunner);
             }
-
         }
     };
 
@@ -160,8 +159,8 @@ public class CameraActivity extends Activity {
 
         ViewGroup frameLayout = (ViewGroup)this.findViewById(R.id.frameLayout);
 
-        lgbTrack = new LgbTrack(frameLayout);
-
+        lgbTrack = new LgbTrack(frameLayout, 1280,720);
+        this.mPreview.addCameraFrameListener(lgbTrack);
 
     }
 
