@@ -78,6 +78,7 @@ void LGBTrack::setTrackTarget(cv::Rect target){
     kcfTracker = kcfInit(image,target);
     cmtTracker = cmtInit(image,target);
     cmtInitKeyPoints = (int)cmtTracker->points_active.size();
+    trackControl->setImageSize(this->imageSize);
     isTargetLost = false;
     isProcessImageThreadRun = true;
     pthread_create(&processImageThreadHandle, NULL, processImageThreadBridge, this);
@@ -125,7 +126,6 @@ cmt::CMT* LGBTrack::cmtInit(cv::Mat image, cv::Rect target){
 
 LGBTrackControl* LGBTrack::trackControlInit(LGBTrackControlCallback callback){
     LGBTrackControl* trackControl = new LGBTrackControl(callback);
-    trackControl->setImageSize(this->imageSize);
     trackControl->vectorLen=0x80;
     trackControl->xKp=1.5;
     trackControl->xKd=1.0;

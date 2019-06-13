@@ -12,6 +12,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,6 +24,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.hoeoi.lgbTrack.LgbTrack;
+import com.hoeoi.lgbTrack.LgbTrackCallback;
 import com.hoeoi.lgbTrack.TrackView;
 
 import org.hschott.camdroid.util.StorageUtils;
@@ -32,7 +34,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class CameraActivity extends Activity implements OnCameraPreviewListener{
+public class CameraActivity extends Activity implements OnCameraPreviewListener,LgbTrackCallback {
     private CameraPreviewView mPreview;
     private ProcessFramesView mProcessorView;
     private LgbTrack lgbTrack;
@@ -162,6 +164,7 @@ public class CameraActivity extends Activity implements OnCameraPreviewListener{
         ViewGroup frameLayout = (ViewGroup)this.findViewById(R.id.frameLayout);
 
         lgbTrack = new LgbTrack(frameLayout, 1920,1080);
+        lgbTrack.setCallback(this);
         this.mPreview.addCameraFrameListener(this);
 
     }
@@ -347,5 +350,10 @@ public class CameraActivity extends Activity implements OnCameraPreviewListener{
     @Override
     public void onCameraPreviewStopped() {
 
+    }
+
+    @Override
+    public void didTrackControl(int yaw, int pitch) {
+        Log.e("LgbTrack","yaw:" +yaw+ "pitch:"+pitch);
     }
 }
