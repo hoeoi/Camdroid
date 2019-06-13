@@ -32,7 +32,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class CameraActivity extends Activity {
+public class CameraActivity extends Activity implements OnCameraPreviewListener{
     private CameraPreviewView mPreview;
     private ProcessFramesView mProcessorView;
     private LgbTrack lgbTrack;
@@ -50,6 +50,8 @@ public class CameraActivity extends Activity {
         }
     };
     private Handler mSystemUIHandler;
+
+
 
     private Runnable systemUIHideRunner = new Runnable() {
         @Override
@@ -89,11 +91,11 @@ public class CameraActivity extends Activity {
         this.mPreview = (CameraPreviewView) this
                 .findViewById(R.id.camera_view);
 
-        this.mProcessorView = (ProcessFramesView) this
-                .findViewById(R.id.processor_view);
-
-        this.mProcessorView.setFrameProcessor(FrameProcessors.ColorSpace
-                .newFrameProcessor(this.mProcessorView));
+//        this.mProcessorView = (ProcessFramesView) this
+//                .findViewById(R.id.processor_view);
+//
+//        this.mProcessorView.setFrameProcessor(FrameProcessors.ColorSpace
+//                .newFrameProcessor(this.mProcessorView));
         this.getActionBar().setSubtitle(
                 FrameProcessors.ColorSpace.name());
 
@@ -159,8 +161,8 @@ public class CameraActivity extends Activity {
 
         ViewGroup frameLayout = (ViewGroup)this.findViewById(R.id.frameLayout);
 
-        lgbTrack = new LgbTrack(frameLayout, 1280,720);
-        this.mPreview.addCameraFrameListener(lgbTrack);
+        lgbTrack = new LgbTrack(frameLayout, 1920,1080);
+        this.mPreview.addCameraFrameListener(this);
 
     }
 
@@ -271,8 +273,8 @@ public class CameraActivity extends Activity {
     protected void onStart() {
         super.onStart();
         this.mPreview.createCamera();
-
-        this.mPreview.addCameraFrameListener(this.mProcessorView);
+//
+//        this.mPreview.addCameraFrameListener(this.mProcessorView);
 
         Toast.makeText(this.getApplicationContext(), R.string.select,
                 Toast.LENGTH_LONG).show();
@@ -283,7 +285,7 @@ public class CameraActivity extends Activity {
         super.onStop();
         this.mPreview.releaseCamera();
 
-        this.mPreview.removeCameraFrameListener(this.mProcessorView);
+//        this.mPreview.removeCameraFrameListener(this.mProcessorView);
     }
 
     protected void setFrameProcessor(int ordinal) {
@@ -332,4 +334,18 @@ public class CameraActivity extends Activity {
 
     }
 
+    @Override
+    public void onCameraPreviewFrame(byte[] data, int previewFormat) {
+        this.lgbTrack.processImage(data);
+    }
+
+    @Override
+    public void onCameraPreviewStarted(Camera camera) {
+
+    }
+
+    @Override
+    public void onCameraPreviewStopped() {
+
+    }
 }

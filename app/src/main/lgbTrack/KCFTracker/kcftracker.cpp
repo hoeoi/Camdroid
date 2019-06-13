@@ -88,6 +88,7 @@ the use of this software, even if advised of the possibility of such damage.
 #include "labdata.hpp"
 #endif
 
+#include "LgbConfig.h"
 // Constructor
 KCFTracker::KCFTracker(bool hog, bool fixed_window, bool multiscale, bool lab)
 {

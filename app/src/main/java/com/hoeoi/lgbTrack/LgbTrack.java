@@ -1,35 +1,33 @@
 package com.hoeoi.lgbTrack;
 
 import android.graphics.Rect;
-import android.hardware.Camera;
 import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 
-import org.hschott.camdroid.OnCameraPreviewListener;
+import org.hschott.camdroid.FpsMeter;
 
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class LgbTrack implements TrackViewCallback,OnCameraPreviewListener{
+public class LgbTrack implements TrackViewCallback{
     private TrackView trackView;
     public boolean isTrackEnable;
     private Rect trackTargetRect;
     private LgbTrackCallback callback;
     private ReentrantLock lgbTrackLock;
-    private int imageWidth,imageHeight;
-    private final double image_scale;
+    private int inputWidth,inputHeight; //输入图像尺寸
+    private int scaleWidth,scaleHeight; //缩小之后图像尺寸
+    private final double image_scale = 0.1;
+    FpsMeter fpsMeter;
+
     public LgbTrack(ViewGroup view, int imageWidth, int imageHeight) {
-        image_scale = 0.25;
         trackView = new TrackView(view.getContext(),this);
         view.addView(trackView);
         lgbTrackLock = new ReentrantLock();
-        this.imageWidth = (int)(imageWidth * image_scale);
-        this.imageHeight = (int)(imageHeight * image_scale);
+        inputWidth = imageWidth;
+        inputHeight = imageHeight;
+        scaleWidth = (int)(inputWidth * image_scale);
+        scaleHeight = (int)(inputHeight * image_scale);
+        fpsMeter = new FpsMeter(0,0);
         startTrack();
     }
 
@@ -77,8 +75,8 @@ public class LgbTrack implements TrackViewCallback,OnCameraPreviewListener{
     private Rect viewRect2imageRect(Rect rect){
 
 
-        float widthK = (float) imageWidth / trackView.getWidth();
-        float heightK = (float) imageHeight / trackView.getHeight();
+        float widthK = (float) scaleWidth / trackView.getWidth();
+        float heightK = (float) scaleHeight / trackView.getHeight();
 
         Rect retRect = new Rect();
         retRect.left = (int)(rect.left * widthK);
@@ -92,8 +90,8 @@ public class LgbTrack implements TrackViewCallback,OnCameraPreviewListener{
     }
 
     private Rect imageRect2viewRect(Rect rect){
-        float widthK = (float)trackView.getWidth()/ imageWidth;
-        float heightK = (float)trackView.getHeight()/ imageHeight;
+        float widthK = (float)trackView.getWidth()/ scaleWidth;
+        float heightK = (float)trackView.getHeight()/ scaleHeight;
 
         Rect retRect = new Rect();
         retRect.left = (int)(rect.left * widthK);
@@ -110,36 +108,29 @@ public class LgbTrack implements TrackViewCallback,OnCameraPreviewListener{
         }
         //ToDo
         lgbTrackLock.lock();
-        lgbTrackNativeProcess(imageData,1280,720);
+        lgbTrackNativeProcess(imageData,inputWidth,inputHeight);
         lgbTrackLock.unlock();
     }
 
     public void didLossTargetCallback(){
         Log.d("LgbTrack","didLossTargetCallback call");
+        trackView.doDrawRect(new Rect());
+        if (this.callback != null){
+            this.callback.didTrackControl(0,0);
+        }
     }
 
     public void didUpdatedTargetRectCallback(int left,int top,int right,int bottom){
-        trackView.doDrawRect(new Rect(left,top,right,bottom));
+        Rect rect = imageRect2viewRect(new Rect(left, top, right, bottom));
+        trackView.doDrawRect(rect);
+        String fps = fpsMeter.measure();
+        Log.d("LgbTrack","fps:"+fps);
     }
-
     public void lgbTrackControlCallback(float dx,float dy){
         if (this.callback != null){
             this.callback.didTrackControl((int)dx,(int)dy);
         }
     }
 
-    @Override
-    public void onCameraPreviewFrame(byte[] data, int previewFormat) {
-        this.processImage(data);
-    }
 
-    @Override
-    public void onCameraPreviewStarted(Camera camera) {
-
-    }
-
-    @Override
-    public void onCameraPreviewStopped() {
-
-    }
 }

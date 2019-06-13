@@ -20,7 +20,6 @@ import org.hschott.camdroid.R;
 
 public class TrackView extends FrameLayout {
     private float touchOriginX,touchOriginY;
-    private float drawRectWidth,drawRectHeight;
     private ImageView drawView;
     private Rect toDrawRect;
     public boolean isTouchEnable;

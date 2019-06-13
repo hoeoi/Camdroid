@@ -8,11 +8,19 @@ void didUpdatedTargetRectCallback(cv::Rect rect);
 void lgbTrackControlCallback(float dx,float dy);
 
 static LGBTrack *lgbTrack;
-static JNIEnv *s_env;
 static jobject s_instance;
+JavaVM *g_jvm = NULL;
 
+#define LOG_TAG "JNI_PRINT"
+#define DEBUG_LOG_LEVEL    1
 
-
+#define  LOGE(...)  \
+    do{\
+        if(DEBUG_LOG_LEVEL > 0)\
+        {\
+            __android_log_print(ANDROID_LOG_ERROR,LOG_TAG,__VA_ARGS__);\
+        }\
+    }while(0)
 
 
 extern "C"
@@ -28,21 +36,45 @@ Java_com_hoeoi_lgbTrack_LgbTrack_lgbTrackNativeDeinit(JNIEnv
 
 
 void didLossTargetCallback(){
-    jclass myclass = s_env->FindClass("com/hoeoi/lgbTrack/LgbTrack");
-    jmethodID mid = s_env->GetMethodID(myclass,"didLossTargetCallback","()V");
-    s_env->CallVoidMethod(s_instance,mid);
+    JNIEnv *env;
+    if(g_jvm->AttachCurrentThread(&env, NULL) != JNI_OK)
+    {
+        LOGE("%s: AttachCurrentThread() failed", __FUNCTION__);
+        return;
+    }
+    jclass myclass = env->GetObjectClass(s_instance);
+    jmethodID mid = env->GetMethodID(myclass,"didLossTargetCallback","()V");
+    env->CallVoidMethod(s_instance,mid);
+    g_jvm->DetachCurrentThread();
 }
 
 void didUpdatedTargetRectCallback(cv::Rect rect){
-    jclass myclass = s_env->FindClass("com/hoeoi/lgbTrack/LgbTrack");
-    jmethodID mid = s_env->GetMethodID(myclass,"didUpdatedTargetRectCallback","(I;I;I;I;)V");
-    s_env->CallVoidMethod(s_instance,mid,rect.x,rect.y,rect.x+rect.width,rect.y+rect.height);
+
+    JNIEnv *env;
+    if(g_jvm->AttachCurrentThread(&env, NULL) != JNI_OK)
+    {
+        LOGE("%s: AttachCurrentThread() failed", __FUNCTION__);
+        return;
+    }
+
+    jclass myclass = env->GetObjectClass(s_instance);
+    jmethodID mid = env->GetMethodID(myclass,"didUpdatedTargetRectCallback","(IIII)V");
+    env->CallVoidMethod(s_instance,mid,rect.x,rect.y,rect.x+rect.width,rect.y+rect.height);
+    g_jvm->DetachCurrentThread();
 }
 
 void lgbTrackControlCallback(float dx,float dy){
-    jclass myclass = s_env->FindClass("com/hoeoi/lgbTrack/LgbTrack");
-    jmethodID mid = s_env->GetMethodID(myclass,"lgbTrackControlCallback","(F;F;)V");
-    s_env->CallVoidMethod(s_instance,mid,dx,dy);
+//    jclass myclass = s_env->FindClass("com/hoeoi/lgbTrack/LgbTrack");
+    JNIEnv *env;
+    if(g_jvm->AttachCurrentThread(&env, NULL) != JNI_OK)
+    {
+        LOGE("%s: AttachCurrentThread() failed", __FUNCTION__);
+        return;
+    }
+    jclass myclass = env->GetObjectClass(s_instance);
+    jmethodID mid = env->GetMethodID(myclass,"lgbTrackControlCallback","(FF)V");
+    env->CallVoidMethod(s_instance,mid,dx,dy);
+    g_jvm->DetachCurrentThread();
 }
 
 extern "C"
@@ -61,13 +93,21 @@ Java_com_hoeoi_lgbTrack_LgbTrack_lgbTrackNativeProcess(JNIEnv *env, jobject inst
                                                        jbyteArray data_,
                                                        jint width,
                                                        jint height) {
+    if(lgbTrack != nullptr ){
+        if(lgbTrack->isProcessing){
+            return;
+        }
+    }
     jbyte *data = env->GetByteArrayElements(data_, NULL);
 
     // TODO
     cv::Mat image(height+height/2,width,CV_8UC1,data);
+    cv::Mat imageResize;
+    cv::resize(image, imageResize, cv::Size(), 0.1, 0.1);
+
     cv::Mat imageBGR;
-    imageBGR.create(height,width,CV_8UC3);
-    cv::cvtColor(image, imageBGR, COLOR_YUV420sp2BGR);
+    imageBGR.create(imageResize.rows,imageResize.cols,CV_8UC3);
+    cv::cvtColor(imageResize, imageBGR, COLOR_YUV420sp2BGR);
     if(lgbTrack != nullptr){
        lgbTrack->process(imageBGR);
     }
@@ -81,9 +121,9 @@ Java_com_hoeoi_lgbTrack_LgbTrack_lgbTrackNativeInit(JNIEnv *env, jobject instanc
     lgbTrack = new LGBTrack(didLossTargetCallback,
                                 didUpdatedTargetRectCallback,
                                 lgbTrackControlCallback);
-    s_env = env;
-    s_instance = instance;
-    __android_log_print(ANDROID_LOG_ERROR, "JNITag", "Error....");
+    s_instance = env->NewGlobalRef(instance);
+    env->GetJavaVM(&g_jvm);
+
     return 0;
 
 }

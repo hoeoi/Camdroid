@@ -31,14 +31,14 @@ public:
              DidUpdatedTargetRectCallback didUpdatedTargetRectCallback,
              LGBTrackControlCallback callback);
     ~LGBTrack();
+    bool isProcessing;
     void process(cv::Mat);
     void setTrackTarget(cv::Rect target);
     
     void processImageThread();
     void cmtCheckThread();
     static float percentPointsInRect(std::vector<cv::Point2f> points, cv::Rect rect);
-    cv::Size getImageSize();
-    void setRectScale(float);
+
 private:
     pthread_mutex_t imageMutex;
     pthread_mutex_t currentImageRectPairMutex;

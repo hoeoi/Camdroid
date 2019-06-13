@@ -4,17 +4,7 @@
     android:layout_height="match_parent"
     tools:context="org.hschott.camdroid.CameraActivity">
 
-    <FrameLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <org.hschott.camdroid.ProcessFramesView
-            android:id="@+id/processor_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-    </FrameLayout>
 
 
     <LinearLayout
@@ -37,12 +27,17 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight=".65" />
-
-            <org.hschott.camdroid.CameraPreviewView
-                android:id="@+id/camera_view"
+            <org.hschott.camdroid.ProcessFramesView
+                android:id="@+id/processor_view"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight=".3" />
+                android:layout_weight=".3"/>
+            <!--<org.hschott.camdroid.CameraPreviewView-->
+                <!--android:id="@+id/camera_view"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_weight=".3"-->
+                <!--/>-->
 
             <View
                 android:layout_width="0dp"
@@ -63,4 +58,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!--<org.hschott.camdroid.ProcessFramesView-->
+                <!--android:id="@+id/processor_view"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent" />-->
+            <org.hschott.camdroid.CameraPreviewView
+                android:id="@+id/camera_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+        </FrameLayout>
 </RelativeLayout>

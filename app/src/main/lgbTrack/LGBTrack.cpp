@@ -10,7 +10,7 @@
 #include <unistd.h>
 
 #define cmtTh 0.6
-#define image_scale (1.0/4.0)
+#define image_scale (1.0/10.0)
 
 using namespace cv;
 using namespace std;
@@ -30,7 +30,7 @@ LGBTrack::LGBTrack(DidLossTargetCallback didLossTargetCallback,
     //创建线程
 
     imageUpdateSem = false;
-
+    isProcessing = false;
     isProcessImageThreadOut = false;
     isCmtCheckThreadOut = false;
 
@@ -149,15 +149,17 @@ void LGBTrack::process(cv::Mat image){
         return;
     }
 
-    cv::Mat imageResize,image2;
-    cv::resize(image, imageResize, cv::Size(), image_scale, image_scale);
+//    cv::Mat imageResize,image2;
+//    cv::resize(image, imageResize, cv::Size(), image_scale, image_scale);
     
 //    cvtColor(imageResize, image2, COLOR_BGRA2BGR);
     
-    currentImage = imageResize;
-    pthread_mutex_unlock(&imageMutex);;
+    currentImage = image;
+    pthread_mutex_unlock(&imageMutex);
     imageUpdateSem = true;
 }
+
+
 
 void LGBTrack::processImageThread(){
     while(isProcessImageThreadRun){
@@ -171,6 +173,7 @@ void LGBTrack::processImageThread(){
         imageUpdateSem = false;
         
         pthread_mutex_lock(&imageMutex);;
+        isProcessing = true;
         cv::Mat image = currentImage;
 
         cv::Rect rect(0,0,0,0);
@@ -199,7 +202,8 @@ void LGBTrack::processImageThread(){
         currentImageRectPair.image = image;
         currentImageRectPair.rect = rect;
         pthread_mutex_unlock(&currentImageRectPairMutex);;
-        pthread_mutex_unlock(&imageMutex);;
+        pthread_mutex_unlock(&imageMutex);
+        isProcessing = false;
     }
     isProcessImageThreadOut = true;
 }
