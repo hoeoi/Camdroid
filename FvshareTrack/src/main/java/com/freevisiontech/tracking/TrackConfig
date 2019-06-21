@@ -1,0 +1,23 @@
+.class public Lcom/freevisiontech/tracking/TrackConfig;
+.super Ljava/lang/Object;
+.source "TrackConfig.java"
+
+
+# static fields
+.field public static final TrackType_Point:I = 0x1
+
+.field public static final TrackType_Rect:I = 0x2
+
+.field public static final TrackType_Unknown:I
+
+
+# direct methods
+.method public constructor <init>()V
+    .locals 0
+
+    .prologue
+    .line 7
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method

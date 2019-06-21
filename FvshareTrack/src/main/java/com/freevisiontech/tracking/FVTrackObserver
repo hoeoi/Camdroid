@@ -1,0 +1,20 @@
+.class public interface abstract Lcom/freevisiontech/tracking/FVTrackObserver;
+.super Ljava/lang/Object;
+.source "FVTrackObserver.java"
+
+
+# virtual methods
+.method public abstract initTrackFailed()V
+.end method
+
+.method public abstract trackLost()V
+.end method
+
+.method public abstract trackRect(Lorg/opencv/core/Rect;)V
+.end method
+
+.method public abstract trackStarted()V
+.end method
+
+.method public abstract trackStopped()V
+.end method

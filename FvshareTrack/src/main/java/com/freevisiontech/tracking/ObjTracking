@@ -1,0 +1,572 @@
+.class public Lcom/freevisiontech/tracking/ObjTracking;
+.super Ljava/lang/Object;
+.source "ObjTracking.java"
+
+
+# static fields
+.field private static TAG:Ljava/lang/String;
+
+
+# instance fields
+.field private Retfaile:I
+
+.field private isBeforeret:I
+
+.field private mImgtype:I
+
+.field private mRgb:Lorg/opencv/core/Mat;
+
+.field private mTrackPt:Lorg/opencv/core/Point;
+
+.field private mTrackPtTwo:Lorg/opencv/core/Point;
+
+.field private mTrackRect:Lorg/opencv/core/Rect;
+
+.field private mTracker:Lorg/opencv/xtracking/XTracker;
+
+.field private mTrackingInited:Z
+
+.field private mTrackingPreinited:Z
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 1
+
+    .prologue
+    .line 21
+    const-string/jumbo v0, "ObjTracking"
+
+    sput-object v0, Lcom/freevisiontech/tracking/ObjTracking;->TAG:Ljava/lang/String;
+
+    return-void
+.end method
+
+.method public constructor <init>(I)V
+    .locals 2
+    .param p1, "imgtype"    # I
+
+    .prologue
+    const/4 v0, 0x0
+
+    const/4 v1, 0x0
+
+    .line 35
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 23
+    iput-boolean v1, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackingInited:Z
+
+    .line 24
+    iput-boolean v1, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackingPreinited:Z
+
+    .line 25
+    iput-object v0, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackPt:Lorg/opencv/core/Point;
+
+    .line 26
+    iput-object v0, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackPtTwo:Lorg/opencv/core/Point;
+
+    .line 27
+    iput-object v0, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackRect:Lorg/opencv/core/Rect;
+
+    .line 29
+    new-instance v0, Lorg/opencv/core/Mat;
+
+    invoke-direct {v0}, Lorg/opencv/core/Mat;-><init>()V
+
+    iput-object v0, p0, Lcom/freevisiontech/tracking/ObjTracking;->mRgb:Lorg/opencv/core/Mat;
+
+    .line 31
+    const/4 v0, 0x1
+
+    iput v0, p0, Lcom/freevisiontech/tracking/ObjTracking;->Retfaile:I
+
+    .line 32
+    iput v1, p0, Lcom/freevisiontech/tracking/ObjTracking;->isBeforeret:I
+
+    .line 33
+    iput v1, p0, Lcom/freevisiontech/tracking/ObjTracking;->mImgtype:I
+
+    .line 36
+    iput p1, p0, Lcom/freevisiontech/tracking/ObjTracking;->mImgtype:I
+
+    .line 37
+    return-void
+.end method
+
+.method private makeTrackPointFromTrackRect()V
+    .locals 4
+
+    .prologue
+    const/4 v1, 0x0
+
+    .line 186
+    iget-object v0, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackPt:Lorg/opencv/core/Point;
+
+    if-nez v0, :cond_0
+
+    .line 187
+    new-instance v0, Lorg/opencv/core/Point;
+
+    invoke-direct {v0}, Lorg/opencv/core/Point;-><init>()V
+
+    iput-object v0, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackPt:Lorg/opencv/core/Point;
+
+    .line 189
+    :cond_0
+    iget-object v0, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackPtTwo:Lorg/opencv/core/Point;
+
+    if-nez v0, :cond_1
+
+    .line 190
+    new-instance v0, Lorg/opencv/core/Point;
+
+    invoke-direct {v0}, Lorg/opencv/core/Point;-><init>()V
+
+    iput-object v0, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackPtTwo:Lorg/opencv/core/Point;
+
+    .line 192
+    :cond_1
+    iget-object v0, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackRect:Lorg/opencv/core/Rect;
+
+    if-nez v0, :cond_2
+
+    .line 193
+    new-instance v0, Lorg/opencv/core/Rect;
+
+    invoke-direct {v0, v1, v1, v1, v1}, Lorg/opencv/core/Rect;-><init>(IIII)V
+
+    iput-object v0, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackRect:Lorg/opencv/core/Rect;
+
+    .line 195
+    :cond_2
+    iget-object v0, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackPt:Lorg/opencv/core/Point;
+
+    iget-object v1, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackRect:Lorg/opencv/core/Rect;
+
+    iget v1, v1, Lorg/opencv/core/Rect;->x:I
+
+    iget-object v2, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackRect:Lorg/opencv/core/Rect;
+
+    iget v2, v2, Lorg/opencv/core/Rect;->width:I
+
+    div-int/lit8 v2, v2, 0x2
+
+    add-int/2addr v1, v2
+
+    int-to-double v2, v1
+
+    iput-wide v2, v0, Lorg/opencv/core/Point;->x:D
+
+    .line 196
+    iget-object v0, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackPt:Lorg/opencv/core/Point;
+
+    iget-object v1, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackRect:Lorg/opencv/core/Rect;
+
+    iget v1, v1, Lorg/opencv/core/Rect;->y:I
+
+    iget-object v2, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackRect:Lorg/opencv/core/Rect;
+
+    iget v2, v2, Lorg/opencv/core/Rect;->height:I
+
+    div-int/lit8 v2, v2, 0x2
+
+    add-int/2addr v1, v2
+
+    int-to-double v2, v1
+
+    iput-wide v2, v0, Lorg/opencv/core/Point;->y:D
+
+    .line 197
+    return-void
+.end method
+
+.method private makeTrackPointFromTrackRect(II)V
+    .locals 4
+    .param p1, "pointX"    # I
+    .param p2, "pointY"    # I
+
+    .prologue
+    .line 200
+    iget-object v0, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackPt:Lorg/opencv/core/Point;
+
+    if-nez v0, :cond_0
+
+    .line 201
+    new-instance v0, Lorg/opencv/core/Point;
+
+    invoke-direct {v0}, Lorg/opencv/core/Point;-><init>()V
+
+    iput-object v0, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackPt:Lorg/opencv/core/Point;
+
+    .line 203
+    :cond_0
+    iget-object v0, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackPt:Lorg/opencv/core/Point;
+
+    int-to-double v2, p1
+
+    iput-wide v2, v0, Lorg/opencv/core/Point;->x:D
+
+    .line 204
+    iget-object v0, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackPt:Lorg/opencv/core/Point;
+
+    int-to-double v2, p2
+
+    iput-wide v2, v0, Lorg/opencv/core/Point;->y:D
+
+    .line 205
+    return-void
+.end method
+
+
+# virtual methods
+.method public clear()V
+    .locals 2
+
+    .prologue
+    const/4 v0, 0x0
+
+    const/4 v1, 0x0
+
+    .line 50
+    iput-boolean v0, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackingInited:Z
+
+    .line 51
+    iput-boolean v0, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackingPreinited:Z
+
+    .line 52
+    iget-object v0, p0, Lcom/freevisiontech/tracking/ObjTracking;->mRgb:Lorg/opencv/core/Mat;
+
+    invoke-virtual {v0}, Lorg/opencv/core/Mat;->release()V
+
+    .line 53
+    iput-object v1, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackRect:Lorg/opencv/core/Rect;
+
+    .line 54
+    iput-object v1, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackPt:Lorg/opencv/core/Point;
+
+    .line 55
+    iput-object v1, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackPtTwo:Lorg/opencv/core/Point;
+
+    .line 57
+    return-void
+.end method
+
+.method public getTrackPt()Lorg/opencv/core/Point;
+    .locals 2
+
+    .prologue
+    const/4 v1, 0x0
+
+    .line 208
+    iget-object v0, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackPtTwo:Lorg/opencv/core/Point;
+
+    if-nez v0, :cond_0
+
+    .line 209
+    new-instance v0, Lorg/opencv/core/Point;
+
+    invoke-direct {v0}, Lorg/opencv/core/Point;-><init>()V
+
+    iput-object v0, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackPtTwo:Lorg/opencv/core/Point;
+
+    .line 211
+    :cond_0
+    iget-object v0, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackPt:Lorg/opencv/core/Point;
+
+    iput-object v0, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackPtTwo:Lorg/opencv/core/Point;
+
+    .line 212
+    invoke-direct {p0, v1, v1}, Lcom/freevisiontech/tracking/ObjTracking;->makeTrackPointFromTrackRect(II)V
+
+    .line 213
+    iget-object v0, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackPtTwo:Lorg/opencv/core/Point;
+
+    return-object v0
+.end method
+
+.method public getmTrackRect()Lorg/opencv/core/Rect;
+    .locals 2
+
+    .prologue
+    const/4 v1, 0x0
+
+    .line 217
+    iget-object v0, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackRect:Lorg/opencv/core/Rect;
+
+    if-nez v0, :cond_0
+
+    .line 218
+    new-instance v0, Lorg/opencv/core/Rect;
+
+    invoke-direct {v0, v1, v1, v1, v1}, Lorg/opencv/core/Rect;-><init>(IIII)V
+
+    iput-object v0, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackRect:Lorg/opencv/core/Rect;
+
+    .line 220
+    :cond_0
+    iget-object v0, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackRect:Lorg/opencv/core/Rect;
+
+    return-object v0
+.end method
+
+.method public init(Lorg/opencv/core/Mat;Lorg/opencv/core/Rect;)Z
+    .locals 4
+    .param p1, "yuvImageMat"    # Lorg/opencv/core/Mat;
+    .param p2, "boundingBox"    # Lorg/opencv/core/Rect;
+
+    .prologue
+    const/4 v1, 0x1
+
+    const/4 v0, 0x0
+
+    .line 80
+    invoke-virtual {p2}, Lorg/opencv/core/Rect;->clone()Lorg/opencv/core/Rect;
+
+    move-result-object v2
+
+    iput-object v2, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackRect:Lorg/opencv/core/Rect;
+
+    .line 81
+    iget-object v2, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTracker:Lorg/opencv/xtracking/XTracker;
+
+    if-nez v2, :cond_1
+
+    .line 112
+    :cond_0
+    :goto_0
+    return v0
+
+    .line 87
+    :cond_1
+    iget-object v2, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTracker:Lorg/opencv/xtracking/XTracker;
+
+    invoke-virtual {v2, v0, v0, v1}, Lorg/opencv/xtracking/XTracker;->setParam(III)V
+
+    .line 91
+    iget-object v2, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTracker:Lorg/opencv/xtracking/XTracker;
+
+    iget-object v3, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackRect:Lorg/opencv/core/Rect;
+
+    invoke-virtual {v2, p1, v3}, Lorg/opencv/xtracking/XTracker;->init(Lorg/opencv/core/Mat;Lorg/opencv/core/Rect;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_0
+
+    .line 110
+    iput-boolean v1, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackingInited:Z
+
+    .line 111
+    invoke-direct {p0}, Lcom/freevisiontech/tracking/ObjTracking;->makeTrackPointFromTrackRect()V
+
+    move v0, v1
+
+    .line 112
+    goto :goto_0
+.end method
+
+.method public initObjTrack()Z
+    .locals 1
+
+    .prologue
+    .line 41
+    const-string/jumbo v0, "HogKCF"
+
+    invoke-static {v0}, Lorg/opencv/xtracking/XTracker;->create(Ljava/lang/String;)Lorg/opencv/xtracking/XTracker;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTracker:Lorg/opencv/xtracking/XTracker;
+
+    .line 42
+    iget-object v0, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTracker:Lorg/opencv/xtracking/XTracker;
+
+    if-nez v0, :cond_0
+
+    .line 44
+    const/4 v0, 0x0
+
+    .line 46
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x1
+
+    goto :goto_0
+.end method
+
+.method public isTrackInited()Z
+    .locals 1
+
+    .prologue
+    .line 224
+    iget-boolean v0, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackingInited:Z
+
+    return v0
+.end method
+
+.method public isTrackPreinited()Z
+    .locals 1
+
+    .prologue
+    .line 228
+    iget-boolean v0, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackingPreinited:Z
+
+    return v0
+.end method
+
+.method public preinit(Lorg/opencv/core/Mat;Lorg/opencv/core/Rect;)Z
+    .locals 4
+    .param p1, "yuvImageMat"    # Lorg/opencv/core/Mat;
+    .param p2, "boundingBox"    # Lorg/opencv/core/Rect;
+
+    .prologue
+    const/4 v2, 0x1
+
+    const/4 v1, 0x0
+
+    .line 61
+    iget-object v3, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTracker:Lorg/opencv/xtracking/XTracker;
+
+    if-nez v3, :cond_1
+
+    .line 74
+    :cond_0
+    :goto_0
+    return v1
+
+    .line 66
+    :cond_1
+    iget-object v3, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTracker:Lorg/opencv/xtracking/XTracker;
+
+    invoke-virtual {v3, v1, v1, v2}, Lorg/opencv/xtracking/XTracker;->setParam(III)V
+
+    .line 67
+    new-instance v0, Lorg/opencv/core/Mat;
+
+    invoke-direct {v0}, Lorg/opencv/core/Mat;-><init>()V
+
+    .line 68
+    .local v0, "flow":Lorg/opencv/core/Mat;
+    iget-object v3, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTracker:Lorg/opencv/xtracking/XTracker;
+
+    invoke-virtual {v3, p1, p2, v0}, Lorg/opencv/xtracking/XTracker;->preInit(Lorg/opencv/core/Mat;Lorg/opencv/core/Rect;Lorg/opencv/core/Mat;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_0
+
+    .line 73
+    iput-boolean v2, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackingPreinited:Z
+
+    move v1, v2
+
+    .line 74
+    goto :goto_0
+.end method
+
+.method public update(Lorg/opencv/core/Mat;)Z
+    .locals 8
+    .param p1, "yuvImageMat"    # Lorg/opencv/core/Mat;
+
+    .prologue
+    const/4 v3, 0x0
+
+    .line 120
+    iget-object v4, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTracker:Lorg/opencv/xtracking/XTracker;
+
+    if-nez v4, :cond_0
+
+    .line 122
+    sget-object v4, Lcom/freevisiontech/tracking/ObjTracking;->TAG:Ljava/lang/String;
+
+    const-string/jumbo v5, "Tracker is NULL!"
+
+    invoke-static {v4, v5}, Lcom/freevisiontech/cameralib/utils/CameraUtils;->LogV(Ljava/lang/String;Ljava/lang/String;)V
+
+    move v2, v3
+
+    .line 152
+    :goto_0
+    return v2
+
+    .line 126
+    :cond_0
+    iget-boolean v4, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackingInited:Z
+
+    if-nez v4, :cond_1
+
+    .line 128
+    sget-object v4, Lcom/freevisiontech/tracking/ObjTracking;->TAG:Ljava/lang/String;
+
+    const-string/jumbo v5, "Tracker is not inited!"
+
+    invoke-static {v4, v5}, Lcom/freevisiontech/cameralib/utils/CameraUtils;->LogV(Ljava/lang/String;Ljava/lang/String;)V
+
+    move v2, v3
+
+    .line 129
+    goto :goto_0
+
+    .line 142
+    :cond_1
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    move-result-wide v0
+
+    .line 143
+    .local v0, "t2":J
+    iget-object v4, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTracker:Lorg/opencv/xtracking/XTracker;
+
+    iget-object v5, p0, Lcom/freevisiontech/tracking/ObjTracking;->mTrackRect:Lorg/opencv/core/Rect;
+
+    invoke-virtual {v4, p1, v5}, Lorg/opencv/xtracking/XTracker;->update(Lorg/opencv/core/Mat;Lorg/opencv/core/Rect;)Z
+
+    move-result v2
+
+    .line 144
+    .local v2, "update":Z
+    const-string/jumbo v4, "HTrack_tkupdate"
+
+    new-instance v5, Ljava/lang/StringBuilder;
+
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string/jumbo v6, "TrackDuration_tkupdate duration ="
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    move-result-wide v6
+
+    sub-long/2addr v6, v0
+
+    invoke-virtual {v5, v6, v7}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-static {v4, v5}, Lcom/freevisiontech/cameralib/utils/CameraUtils;->LogV(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 147
+    if-eqz v2, :cond_2
+
+    .line 148
+    invoke-direct {p0}, Lcom/freevisiontech/tracking/ObjTracking;->makeTrackPointFromTrackRect()V
+
+    goto :goto_0
+
+    .line 150
+    :cond_2
+    invoke-direct {p0, v3, v3}, Lcom/freevisiontech/tracking/ObjTracking;->makeTrackPointFromTrackRect(II)V
+
+    goto :goto_0
+.end method
