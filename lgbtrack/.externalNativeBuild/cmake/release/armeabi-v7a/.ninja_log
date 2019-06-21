@@ -1,0 +1,23 @@
+# ninja log v5
+54	6238	0	src/main/lgbTrack/CMT/CMakeFiles/cmt.dir/common.cpp.o	8ddcdd7193fec19b
+28	6342	0	src/main/lgbTrack/KCFTracker/CMakeFiles/kcf.dir/fhog.cpp.o	383f961b63909092
+77	6406	0	src/main/lgbTrack/CMT/CMakeFiles/cmt.dir/fastcluster.cpp.o	d12976921aefbf9a
+116	6706	0	src/main/lgbTrack/CMT/CMakeFiles/cmt.dir/Matcher.cpp.o	100ae61716a0a591
+172	6975	0	src/main/lgbTrack/CMT/CMakeFiles/cmt.dir/Consensus.cpp.o	561c1d2bd0a1e375
+6241	8926	0	src/main/lgbTrack/CMT/CMakeFiles/cmt.dir/Tracker.cpp.o	761cc0bb31f2ae55
+6406	8986	0	src/main/lgbTrack/CMT/CMakeFiles/cmt.dir/Fusion.cpp.o	ca3d82e3b58dc75b
+6707	9281	0	src/main/lgbTrack/CMT/CMakeFiles/cmt.dir/CMT.cpp.o	b65b9cf1ec3a428c
+6343	9834	0	src/main/lgbTrack/KCFTracker/CMakeFiles/kcf.dir/LGBTrackControl.cpp.o	c619e219d0aa823a
+2	10306	0	src/main/lgbTrack/KCFTracker/CMakeFiles/kcf.dir/kcftracker.cpp.o	93c8e83097cf73c3
+10307	13196	0	src/main/lgbTrack/KCFTracker/libkcf.a	dde518d040c443a9
+9282	22503	0	src/main/lgbTrack/CMT/libcmt.a	9b0f2883055d52e7
+22527	24652	0	CMakeFiles/lgbTrack.dir/src/main/jni/lgbTrackJni.cpp.o	51c663bdf9b11d19
+22503	24929	0	CMakeFiles/lgbTrack.dir/src/main/lgbTrack/LGBTrack.cpp.o	76c4e3be94139e10
+24929	27645	0	../../../../build/intermediates/cmake/release/obj/armeabi-v7a/liblgbTrack.so	bf5103493ab5ff7c
+8	8536	0	CMakeFiles/lgbTrack.dir/src/main/lgbTrack/LGBTrack.cpp.o	76c4e3be94139e10
+8536	12309	0	../../../../build/intermediates/cmake/release/obj/armeabi-v7a/liblgbTrack.so	bf5103493ab5ff7c
+8	2257	0	CMakeFiles/lgbTrack.dir/src/main/lgbTrack/LGBTrack.cpp.o	76c4e3be94139e10
+2257	2933	0	../../../../build/intermediates/cmake/release/obj/armeabi-v7a/liblgbTrack.so	bf5103493ab5ff7c
+34	2416	0	CMakeFiles/lgbTrack.dir/src/main/jni/lgbTrackJni.cpp.o	51c663bdf9b11d19
+9	2789	0	CMakeFiles/lgbTrack.dir/src/main/lgbTrack/LGBTrack.cpp.o	76c4e3be94139e10
+2789	4253	0	../../../../build/intermediates/cmake/release/obj/armeabi-v7a/liblgbTrack.so	bf5103493ab5ff7c

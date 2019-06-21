@@ -1,29 +1,23 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 19
+    compileSdkVersion 28
     buildToolsVersion "27.0.3"
     defaultConfig {
         applicationId "org.hschott.camdroid"
         minSdkVersion 19
-        targetSdkVersion 19
+        targetSdkVersion 28
         versionCode 4
         versionName "2.1"
-        externalNativeBuild {
-            cmake {
-                cppFlags "-std=c++11 -frtti -fexceptions"
-            }
-        }
-        ndk {
-            abiFilters 'armeabi' , 'armeabi-v7a'
+
+    }
+
+    repositories {
+        flatDir {
+            dirs 'libs'
         }
     }
 
-    externalNativeBuild {
-        cmake {
-            path 'CMakeLists.txt'
-        }
-    }
     buildTypes {
         release {
             minifyEnabled false
@@ -41,4 +35,6 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':openCVLibrary300')
     compile project(':tesseractLibrary30202')
+    compile project(':lgbtrack')
+//    compile(name: 'lgbtrack', ext: 'aar')
 }

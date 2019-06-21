@@ -400,7 +400,7 @@ public class CameraManager {
                     Camera.Parameters.FLASH_MODE_OFF);
         }
         if (flashMode != null) {
-            parameters.setFlashMode(flashMode);
+//            parameters.setFlashMode(flashMode);
         }
     }
 

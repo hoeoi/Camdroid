@@ -1,0 +1,9 @@
+H:/work/Camdroid/lgbtrack/.externalNativeBuild/cmake/release/armeabi-v7a/CMakeFiles/lgbTrack.dir
+H:/work/Camdroid/lgbtrack/.externalNativeBuild/cmake/release/armeabi-v7a/CMakeFiles/edit_cache.dir
+H:/work/Camdroid/lgbtrack/.externalNativeBuild/cmake/release/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+H:/work/Camdroid/lgbtrack/.externalNativeBuild/cmake/release/armeabi-v7a/src/main/lgbTrack/KCFTracker/CMakeFiles/kcf.dir
+H:/work/Camdroid/lgbtrack/.externalNativeBuild/cmake/release/armeabi-v7a/src/main/lgbTrack/KCFTracker/CMakeFiles/edit_cache.dir
+H:/work/Camdroid/lgbtrack/.externalNativeBuild/cmake/release/armeabi-v7a/src/main/lgbTrack/KCFTracker/CMakeFiles/rebuild_cache.dir
+H:/work/Camdroid/lgbtrack/.externalNativeBuild/cmake/release/armeabi-v7a/src/main/lgbTrack/CMT/CMakeFiles/cmt.dir
+H:/work/Camdroid/lgbtrack/.externalNativeBuild/cmake/release/armeabi-v7a/src/main/lgbTrack/CMT/CMakeFiles/edit_cache.dir
+H:/work/Camdroid/lgbtrack/.externalNativeBuild/cmake/release/armeabi-v7a/src/main/lgbTrack/CMT/CMakeFiles/rebuild_cache.dir

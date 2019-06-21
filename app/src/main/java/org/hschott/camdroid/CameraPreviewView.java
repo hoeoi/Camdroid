@@ -16,6 +16,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import org.hschott.camdroid.OnCameraPreviewListener.AutoFocusManagerAware;
 
@@ -117,7 +118,9 @@ public class CameraPreviewView extends ViewGroup implements PreviewCallback,
         Log.d(TAG, "initView()");
         this.setBackgroundColor(this.getResources().getColor(
                 android.R.color.black));
+
         this.mSurfaceView = new SurfaceView(context);
+
         this.mSurfaceView.setKeepScreenOn(true);
 
         this.addView(this.mSurfaceView, 0);

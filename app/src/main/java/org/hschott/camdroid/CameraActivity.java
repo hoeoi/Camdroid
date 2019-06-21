@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Menu;
@@ -20,12 +19,11 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.hoeoi.lgbTrack.LgbTrack;
 import com.hoeoi.lgbTrack.LgbTrackCallback;
-import com.hoeoi.lgbTrack.TrackView;
 
 import org.hschott.camdroid.util.StorageUtils;
 
@@ -53,7 +51,8 @@ public class CameraActivity extends Activity implements OnCameraPreviewListener,
     };
     private Handler mSystemUIHandler;
 
-
+    private Button startButton;
+    private Button stopButton;
 
     private Runnable systemUIHideRunner = new Runnable() {
         @Override
@@ -144,6 +143,21 @@ public class CameraActivity extends Activity implements OnCameraPreviewListener,
             }
         });*/
 
+        startButton = (Button) this.findViewById(R.id.startButton);
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lgbTrack.startTrack();
+            }
+        });
+        stopButton = (Button) this.findViewById(R.id.stopButton);
+        stopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lgbTrack.stopTrack();
+            }
+        });
+
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
         // Catch screen off event
@@ -163,10 +177,9 @@ public class CameraActivity extends Activity implements OnCameraPreviewListener,
 
         ViewGroup frameLayout = (ViewGroup)this.findViewById(R.id.frameLayout);
 
-        lgbTrack = new LgbTrack(frameLayout, 1920,1080);
+        lgbTrack = new LgbTrack(frameLayout, 1440,1080);
         lgbTrack.setCallback(this);
         this.mPreview.addCameraFrameListener(this);
-
     }
 
     @Override

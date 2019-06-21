@@ -1,0 +1,133 @@
+
+{
+	"buildFiles" : 
+	[
+		"H:/work/Camdroid/lgbtrack/CMakeLists.txt",
+		"H:/work/Camdroid/lgbtrack/src/main/lgbTrack/KCFTracker/CMakeLists.txt",
+		"H:/work/Camdroid/lgbtrack/src/main/lgbTrack/CMT/CMakeLists.txt"
+	],
+	"cleanCommands" : 
+	[
+		"D:\\Android\\sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build H:\\work\\Camdroid\\lgbtrack\\.externalNativeBuild\\cmake\\debug\\armeabi-v7a --target clean"
+	],
+	"cppFileExtensions" : [ "cpp" ],
+	"libraries" : 
+	{
+		"cmt-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "cmt",
+			"buildCommand" : "D:\\Android\\sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build H:\\work\\Camdroid\\lgbtrack\\.externalNativeBuild\\cmake\\debug\\armeabi-v7a --target cmt",
+			"buildType" : "debug",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain D:/Android/android-ndk-r13b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 --sysroot=D:/Android/android-ndk-r13b/platforms/android-15/arch-arm   -I..\\..\\..\\..\\src\\main\\lgbTrack\\include -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\libs\\armeabi-v7a\\include -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include\\backward  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -std=c++11 -frtti -fexceptions -O0 -fno-limit-debug-info -O0 -fno-limit-debug-info     -c ",
+					"src" : "H:/work/Camdroid/lgbtrack/src/main/lgbTrack/CMT/CMT.cpp",
+					"workingDirectory" : "H:/work/Camdroid/lgbtrack/.externalNativeBuild/cmake/debug/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain D:/Android/android-ndk-r13b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 --sysroot=D:/Android/android-ndk-r13b/platforms/android-15/arch-arm   -I..\\..\\..\\..\\src\\main\\lgbTrack\\include -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\libs\\armeabi-v7a\\include -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include\\backward  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -std=c++11 -frtti -fexceptions -O0 -fno-limit-debug-info -O0 -fno-limit-debug-info     -c ",
+					"src" : "H:/work/Camdroid/lgbtrack/src/main/lgbTrack/CMT/common.cpp",
+					"workingDirectory" : "H:/work/Camdroid/lgbtrack/.externalNativeBuild/cmake/debug/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain D:/Android/android-ndk-r13b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 --sysroot=D:/Android/android-ndk-r13b/platforms/android-15/arch-arm   -I..\\..\\..\\..\\src\\main\\lgbTrack\\include -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\libs\\armeabi-v7a\\include -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include\\backward  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -std=c++11 -frtti -fexceptions -O0 -fno-limit-debug-info -O0 -fno-limit-debug-info     -c ",
+					"src" : "H:/work/Camdroid/lgbtrack/src/main/lgbTrack/CMT/Consensus.cpp",
+					"workingDirectory" : "H:/work/Camdroid/lgbtrack/.externalNativeBuild/cmake/debug/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain D:/Android/android-ndk-r13b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 --sysroot=D:/Android/android-ndk-r13b/platforms/android-15/arch-arm   -I..\\..\\..\\..\\src\\main\\lgbTrack\\include -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\libs\\armeabi-v7a\\include -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include\\backward  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -std=c++11 -frtti -fexceptions -O0 -fno-limit-debug-info -O0 -fno-limit-debug-info     -c ",
+					"src" : "H:/work/Camdroid/lgbtrack/src/main/lgbTrack/CMT/fastcluster.cpp",
+					"workingDirectory" : "H:/work/Camdroid/lgbtrack/.externalNativeBuild/cmake/debug/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain D:/Android/android-ndk-r13b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 --sysroot=D:/Android/android-ndk-r13b/platforms/android-15/arch-arm   -I..\\..\\..\\..\\src\\main\\lgbTrack\\include -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\libs\\armeabi-v7a\\include -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include\\backward  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -std=c++11 -frtti -fexceptions -O0 -fno-limit-debug-info -O0 -fno-limit-debug-info     -c ",
+					"src" : "H:/work/Camdroid/lgbtrack/src/main/lgbTrack/CMT/Fusion.cpp",
+					"workingDirectory" : "H:/work/Camdroid/lgbtrack/.externalNativeBuild/cmake/debug/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain D:/Android/android-ndk-r13b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 --sysroot=D:/Android/android-ndk-r13b/platforms/android-15/arch-arm   -I..\\..\\..\\..\\src\\main\\lgbTrack\\include -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\libs\\armeabi-v7a\\include -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include\\backward  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -std=c++11 -frtti -fexceptions -O0 -fno-limit-debug-info -O0 -fno-limit-debug-info     -c ",
+					"src" : "H:/work/Camdroid/lgbtrack/src/main/lgbTrack/CMT/Matcher.cpp",
+					"workingDirectory" : "H:/work/Camdroid/lgbtrack/.externalNativeBuild/cmake/debug/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain D:/Android/android-ndk-r13b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 --sysroot=D:/Android/android-ndk-r13b/platforms/android-15/arch-arm   -I..\\..\\..\\..\\src\\main\\lgbTrack\\include -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\libs\\armeabi-v7a\\include -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include\\backward  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -std=c++11 -frtti -fexceptions -O0 -fno-limit-debug-info -O0 -fno-limit-debug-info     -c ",
+					"src" : "H:/work/Camdroid/lgbtrack/src/main/lgbTrack/CMT/Tracker.cpp",
+					"workingDirectory" : "H:/work/Camdroid/lgbtrack/.externalNativeBuild/cmake/debug/armeabi-v7a"
+				}
+			],
+			"output" : "H:/work/Camdroid/lgbtrack/.externalNativeBuild/cmake/debug/armeabi-v7a/src/main/lgbTrack/CMT/libcmt.a",
+			"toolchain" : "1656307305"
+		},
+		"kcf-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "kcf",
+			"buildCommand" : "D:\\Android\\sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build H:\\work\\Camdroid\\lgbtrack\\.externalNativeBuild\\cmake\\debug\\armeabi-v7a --target kcf",
+			"buildType" : "debug",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain D:/Android/android-ndk-r13b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 --sysroot=D:/Android/android-ndk-r13b/platforms/android-15/arch-arm   -I..\\..\\..\\..\\src\\main\\lgbTrack\\include -I..\\..\\..\\..\\src\\main\\lgbTrack -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\libs\\armeabi-v7a\\include -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include\\backward  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -std=c++11 -frtti -fexceptions -O0 -fno-limit-debug-info -O0 -fno-limit-debug-info     -c ",
+					"src" : "H:/work/Camdroid/lgbtrack/src/main/lgbTrack/KCFTracker/fhog.cpp",
+					"workingDirectory" : "H:/work/Camdroid/lgbtrack/.externalNativeBuild/cmake/debug/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain D:/Android/android-ndk-r13b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 --sysroot=D:/Android/android-ndk-r13b/platforms/android-15/arch-arm   -I..\\..\\..\\..\\src\\main\\lgbTrack\\include -I..\\..\\..\\..\\src\\main\\lgbTrack -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\libs\\armeabi-v7a\\include -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include\\backward  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -std=c++11 -frtti -fexceptions -O0 -fno-limit-debug-info -O0 -fno-limit-debug-info     -c ",
+					"src" : "H:/work/Camdroid/lgbtrack/src/main/lgbTrack/KCFTracker/kcftracker.cpp",
+					"workingDirectory" : "H:/work/Camdroid/lgbtrack/.externalNativeBuild/cmake/debug/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain D:/Android/android-ndk-r13b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 --sysroot=D:/Android/android-ndk-r13b/platforms/android-15/arch-arm   -I..\\..\\..\\..\\src\\main\\lgbTrack\\include -I..\\..\\..\\..\\src\\main\\lgbTrack -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\libs\\armeabi-v7a\\include -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include\\backward  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -std=c++11 -frtti -fexceptions -O0 -fno-limit-debug-info -O0 -fno-limit-debug-info     -c ",
+					"src" : "H:/work/Camdroid/lgbtrack/src/main/lgbTrack/KCFTracker/LGBTrackControl.cpp",
+					"workingDirectory" : "H:/work/Camdroid/lgbtrack/.externalNativeBuild/cmake/debug/armeabi-v7a"
+				}
+			],
+			"output" : "H:/work/Camdroid/lgbtrack/.externalNativeBuild/cmake/debug/armeabi-v7a/src/main/lgbTrack/KCFTracker/libkcf.a",
+			"toolchain" : "1656307305"
+		},
+		"lgbTrack-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "lgbTrack",
+			"buildCommand" : "D:\\Android\\sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build H:\\work\\Camdroid\\lgbtrack\\.externalNativeBuild\\cmake\\debug\\armeabi-v7a --target lgbTrack",
+			"buildType" : "debug",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain D:/Android/android-ndk-r13b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 --sysroot=D:/Android/android-ndk-r13b/platforms/android-15/arch-arm  -DlgbTrack_EXPORTS -I..\\..\\..\\..\\src\\main\\lgbTrack\\KCFTracker -I..\\..\\..\\..\\src\\main\\lgbTrack\\CMT -I..\\..\\..\\..\\src\\main\\lgbTrack\\include -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\libs\\armeabi-v7a\\include -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include\\backward  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -std=c++11 -frtti -fexceptions -g -Wall -fPIC    -c ",
+					"src" : "H:/work/Camdroid/lgbtrack/src/main/lgbTrack/LGBTrack.cpp",
+					"workingDirectory" : "H:/work/Camdroid/lgbtrack/.externalNativeBuild/cmake/debug/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain D:/Android/android-ndk-r13b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 --sysroot=D:/Android/android-ndk-r13b/platforms/android-15/arch-arm  -DlgbTrack_EXPORTS -I..\\..\\..\\..\\src\\main\\lgbTrack\\KCFTracker -I..\\..\\..\\..\\src\\main\\lgbTrack\\CMT -I..\\..\\..\\..\\src\\main\\lgbTrack\\include -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\libs\\armeabi-v7a\\include -isystem D:\\Android\\android-ndk-r13b\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include\\backward  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -std=c++11 -frtti -fexceptions -g -Wall -fPIC    -c ",
+					"src" : "H:/work/Camdroid/lgbtrack/src/main/jni/lgbTrackJni.cpp",
+					"workingDirectory" : "H:/work/Camdroid/lgbtrack/.externalNativeBuild/cmake/debug/armeabi-v7a"
+				}
+			],
+			"output" : "H:/work/Camdroid/lgbtrack/build/intermediates/cmake/debug/obj/armeabi-v7a/liblgbTrack.so",
+			"toolchain" : "1656307305"
+		}
+	},
+	"toolchains" : 
+	{
+		"1656307305" : 
+		{
+			"cCompilerExecutable" : "D:/Android/android-ndk-r13b/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe",
+			"cppCompilerExecutable" : "D:/Android/android-ndk-r13b/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe"
+		}
+	}
+}
