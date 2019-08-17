@@ -1,14 +1,14 @@
 Executable : D:\Android\sdk\cmake\3.6.4111459\bin\cmake.exe
 arguments : 
--HH:\work\Camdroid\lgbtrack
--BH:\work\Camdroid\lgbtrack\.externalNativeBuild\cmake\release\armeabi-v7a
+-HE:\workspace\Android\camdroid2\Camdroid\lgbtrack
+-BE:\workspace\Android\camdroid2\Camdroid\lgbtrack\.externalNativeBuild\cmake\release\armeabi-v7a
 -DANDROID_ABI=armeabi-v7a
 -DANDROID_PLATFORM=android-15
--DCMAKE_LIBRARY_OUTPUT_DIRECTORY=H:\work\Camdroid\lgbtrack\build\intermediates\cmake\release\obj\armeabi-v7a
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=E:\workspace\Android\camdroid2\Camdroid\lgbtrack\build\intermediates\cmake\release\obj\armeabi-v7a
 -DCMAKE_BUILD_TYPE=Release
--DANDROID_NDK=D:\Android\android-ndk-r13b
+-DANDROID_NDK=D:\Android\NDK\android-ndk-r16b
 -DCMAKE_CXX_FLAGS=-std=c++11 -frtti -fexceptions
--DCMAKE_TOOLCHAIN_FILE=D:\Android\android-ndk-r13b\build\cmake\android.toolchain.cmake
+-DCMAKE_TOOLCHAIN_FILE=D:\Android\NDK\android-ndk-r16b\build\cmake\android.toolchain.cmake
 -DCMAKE_MAKE_PROGRAM=D:\Android\sdk\cmake\3.6.4111459\bin\ninja.exe
 -GAndroid Gradle - Ninja
 jvmArgs : 

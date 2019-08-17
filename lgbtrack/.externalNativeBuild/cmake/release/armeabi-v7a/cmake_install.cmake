@@ -1,4 +1,4 @@
-# Install script for directory: H:/work/Camdroid/lgbtrack
+# Install script for directory: E:/workspace/Android/camdroid2/Camdroid/lgbtrack
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,8 +34,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("H:/work/Camdroid/lgbtrack/.externalNativeBuild/cmake/release/armeabi-v7a/src/main/lgbTrack/KCFTracker/cmake_install.cmake")
-  include("H:/work/Camdroid/lgbtrack/.externalNativeBuild/cmake/release/armeabi-v7a/src/main/lgbTrack/CMT/cmake_install.cmake")
+  include("E:/workspace/Android/camdroid2/Camdroid/lgbtrack/.externalNativeBuild/cmake/release/armeabi-v7a/src/main/lgbTrack/KCFTracker/cmake_install.cmake")
+  include("E:/workspace/Android/camdroid2/Camdroid/lgbtrack/.externalNativeBuild/cmake/release/armeabi-v7a/src/main/lgbTrack/CMT/cmake_install.cmake")
 
 endif()
 
@@ -47,5 +47,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "H:/work/Camdroid/lgbtrack/.externalNativeBuild/cmake/release/armeabi-v7a/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "E:/workspace/Android/camdroid2/Camdroid/lgbtrack/.externalNativeBuild/cmake/release/armeabi-v7a/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -1,16 +1,20 @@
 package org.hschott.camdroid;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.media.AudioManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.app.Fragment;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Menu;
@@ -81,12 +85,27 @@ public class CameraActivity extends Activity implements OnCameraPreviewListener,
                         | View.SYSTEM_UI_FLAG_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_IMMERSIVE);
     }
+    static CameraActivity activity;
+    static public CameraActivity getActivity(){
+        return activity;
+    }
 
+    void Request() {
+        //获取相机拍摄读写权限
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            //版本判断
+//            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.CAMERA}, 1);
+//            }
+//        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Request();
         hideSystemUI();
-
+//        activity = this;？
         this.setContentView(R.layout.camera);
 
         this.mPreview = (CameraPreviewView) this

@@ -18,7 +18,7 @@ public class FpsMeter {
 
     private long frames;
     private double fps;
-    private static final int STEP = 10;
+    private static final int STEP = 30;
 
     public FpsMeter(int width, int height) {
         super();

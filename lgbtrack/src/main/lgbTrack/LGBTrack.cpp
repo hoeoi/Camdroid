@@ -221,7 +221,7 @@ void* cmtCheckThreadBridge(void *arg){
 }
 void LGBTrack::cmtCheckThread(){
     while(isCmtCheckThreadRun){
-        usleep(300000);
+        usleep(80000);
         ImageRectPairType pair;
         
         pthread_mutex_lock(&currentImageRectPairMutex);

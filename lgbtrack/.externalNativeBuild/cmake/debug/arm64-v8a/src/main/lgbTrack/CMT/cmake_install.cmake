@@ -1,4 +1,4 @@
-# Install script for directory: H:/work/Camdroid/lgbtrack/src/main/lgbTrack/CMT
+# Install script for directory: E:/workspace/Android/camdroid2/Camdroid/lgbtrack/src/main/lgbTrack/CMT
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

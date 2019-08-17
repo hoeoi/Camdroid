@@ -134,7 +134,7 @@ public class LgbTrack implements TrackViewCallback{
         Rect rect = imageRect2viewRect(new Rect(left, top, right, bottom));
         trackView.doDrawRect(rect);
         String fps = fpsMeter.measure();
-//        Log.d("LgbTrack","fps:"+fps);
+        Log.d("LgbTrack","fps:"+fps);
     }
     public void lgbTrackControlCallback(float dx,float dy){
         if (this.callback != null){

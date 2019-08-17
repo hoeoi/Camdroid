@@ -36,5 +36,6 @@ dependencies {
     compile project(':openCVLibrary300')
     compile project(':tesseractLibrary30202')
     compile project(':lgbtrack')
-//    compile(name: 'lgbtrack', ext: 'aar')
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    //    compile(name: 'lgbtrack', ext: 'aar')
 }
