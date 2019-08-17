@@ -91,9 +91,8 @@ Java_com_hoeoi_lgbTrack_LgbTrack_lgbTrackNativeSetTrackTarget(JNIEnv *env, jobje
 }extern "C"
 JNIEXPORT void JNICALL
 Java_com_hoeoi_lgbTrack_LgbTrack_lgbTrackNativeProcess(JNIEnv *env, jobject instance,
-                                                       jbyteArray data_,
-                                                       jint width,
-                                                       jint height) {
+                                                       jbyteArray data_, jint width, jint height,
+                                                       jint orientation) {
     if(lgbTrack != nullptr ){
         if(lgbTrack->isProcessing){
             return;
@@ -109,6 +108,17 @@ Java_com_hoeoi_lgbTrack_LgbTrack_lgbTrackNativeProcess(JNIEnv *env, jobject inst
     cv::Mat imageBGR;
     imageBGR.create(imageResize.rows,imageResize.cols,CV_8UC3);
     cv::cvtColor(imageResize, imageBGR, COLOR_YUV420sp2BGR);
+    if(orientation != 0) {
+        cv::Mat dst;
+        Point center(imageBGR.cols/2,imageBGR.rows/2); //旋转中心
+        double angle = orientation;  //角度
+        double scale = 1.0;  //缩放系数
+        Mat rotMat = getRotationMatrix2D(center,angle,scale);
+        warpAffine(imageBGR,dst,rotMat,imageBGR.size());
+        imageBGR = dst;
+    }
+
+
     if(lgbTrack != nullptr){
        lgbTrack->process(imageBGR);
     }

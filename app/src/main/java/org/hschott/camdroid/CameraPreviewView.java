@@ -274,7 +274,7 @@ public class CameraPreviewView extends ViewGroup implements PreviewCallback,
                 Log.e(TAG, "IOException caused by setPreviewDisplay()",
                         exception);
             }
-            setCameraDisplayOrientation((Activity) getContext(), CameraInfo.CAMERA_FACING_BACK,mCamera);
+//            setCameraDisplayOrientation((Activity) getContext(), CameraInfo.CAMERA_FACING_BACK,mCamera);
             this.requestLayout();
 //            this.stopPreview();
             this.startPreview();

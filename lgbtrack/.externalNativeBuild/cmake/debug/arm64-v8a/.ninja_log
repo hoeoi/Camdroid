@@ -50,3 +50,5 @@
 2602	3928	0	CMakeFiles/lgbTrack.dir/src/main/jni/lgbTrackJni.cpp.o	91a42add56e300cb
 2611	3967	0	CMakeFiles/lgbTrack.dir/src/main/lgbTrack/LGBTrack.cpp.o	2efd113cbd588365
 3967	5069	0	../../../../build/intermediates/cmake/debug/obj/arm64-v8a/liblgbTrack.so	e43bbacad37bc4b7
+16	2957	0	CMakeFiles/lgbTrack.dir/src/main/jni/lgbTrackJni.cpp.o	91a42add56e300cb
+2957	6027	0	../../../../build/intermediates/cmake/debug/obj/arm64-v8a/liblgbTrack.so	e43bbacad37bc4b7

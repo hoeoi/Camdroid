@@ -37,7 +37,7 @@ public class LgbTrack implements TrackViewCallback{
     private native void lgbTrackNativeInit();
     private native void lgbTrackNativeDeinit();
     private native void lgbTrackNativeSetTrackTarget(int x,int y,int width,int height);
-    private native void lgbTrackNativeProcess(byte [] data,int width ,int height);
+    private native void lgbTrackNativeProcess(byte [] data,int width ,int height,int orientation);
     static {
         System.loadLibrary("lgbTrack");
     }
@@ -112,7 +112,7 @@ public class LgbTrack implements TrackViewCallback{
             }
             //ToDo
             lgbTrackLock.lock();
-            lgbTrackNativeProcess(imageData,inputWidth,inputHeight);
+            lgbTrackNativeProcess(imageData,inputWidth,inputHeight,180);
             lgbTrackLock.unlock();
         }
     }
