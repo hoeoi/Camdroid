@@ -6,7 +6,10 @@ import android.util.Log;
 import android.view.ViewGroup;
 
 
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.logging.Handler;
 
 public class LgbTrack implements TrackViewCallback{
     private TrackView trackView;
@@ -18,6 +21,10 @@ public class LgbTrack implements TrackViewCallback{
     private int scaleWidth,scaleHeight; //缩小之后图像尺寸
     private final double image_scale = 0.25;
     FpsMeter fpsMeter;
+    private Timer timer;
+    private TimerTask task;
+    private int timeoutCnt = 0;
+    public int timeout = 8;
 
     public LgbTrack(ViewGroup view, int imageWidth, int imageHeight) {
         trackView = new TrackView(view.getContext(),this);
@@ -28,6 +35,9 @@ public class LgbTrack implements TrackViewCallback{
         scaleWidth = (int)(inputWidth * image_scale);
         scaleHeight = (int)(inputHeight * image_scale);
         fpsMeter = new FpsMeter(0,0);
+
+
+
     }
 
     public void setCallback(LgbTrackCallback callback){
@@ -50,12 +60,32 @@ public class LgbTrack implements TrackViewCallback{
         lgbTrackNativeSetTrackTarget(imageTarget.left,imageTarget.top,imageTarget.width(),imageTarget.height());
         lgbTrackLock.unlock();
     }
+    private void startTimeoutCheck(){
+        timer = new Timer();
+        task = new TimerTask() {
+            @Override
+            public void run() {
+                timeoutCnt++;
+                if (timeoutCnt == timeout) {
+                    timeoutCnt = 0;
+                    //
+//                    Log.e("lgbTrack","丢失目标找回超时");
+                    callback.didTargetLost();
 
+                }
+            }
+        };
+        timeoutCnt = 0;
+        timer.schedule(task,0,1000);
+    }
+    private void stopTimeoutCheck(){
+        timer.cancel();
+    }
     public void startTrack(){
         lgbTrackNativeInit();
         isTrackEnable = true;
         trackView.isTouchEnable = true;
-
+        startTimeoutCheck();
     }
 
     public void stopTrack(){
@@ -69,6 +99,7 @@ public class LgbTrack implements TrackViewCallback{
             this.callback.didTrackControl(0,0);
         }
         lgbTrackLock.unlock();
+        stopTimeoutCheck();
     }
 
     private Rect viewRect2imageRect(Rect rect){
@@ -101,8 +132,10 @@ public class LgbTrack implements TrackViewCallback{
     }
     private class ProcessImageThread extends Thread{
         private byte[] imageData;
-        public ProcessImageThread(byte[] data) {
+        private int orientation;
+        public ProcessImageThread(byte[] data,int orientation) {
             imageData = data;
+            this.orientation = orientation;
         }
 
         @Override
@@ -112,22 +145,22 @@ public class LgbTrack implements TrackViewCallback{
             }
             //ToDo
             lgbTrackLock.lock();
-            lgbTrackNativeProcess(imageData,inputWidth,inputHeight,180);
+            lgbTrackNativeProcess(imageData,inputWidth,inputHeight,orientation);
             lgbTrackLock.unlock();
         }
     }
 
-    public void processImage(final byte[] imageData) {
-        ProcessImageThread thread = new ProcessImageThread(imageData);
+    public void processImage(final byte[] imageData,int orientation) {
+        ProcessImageThread thread = new ProcessImageThread(imageData,orientation);
         thread.start();
     }
 
     public void didLossTargetCallback(){
 //        Log.d("LgbTrack","didLossTargetCallback call");
         trackView.doDrawRect(new Rect());
-        if (this.callback != null){
-            this.callback.didTrackControl(0,0);
-        }
+//        if (this.callback != null){
+//            this.callback.didTrackControl(0,0);
+//        }
     }
 
     public void didUpdatedTargetRectCallback(int left,int top,int right,int bottom){
@@ -140,6 +173,7 @@ public class LgbTrack implements TrackViewCallback{
         if (this.callback != null){
             this.callback.didTrackControl((int)dx,(int)dy);
         }
+        timeoutCnt = 0;
     }
 
     public String readUDID(){

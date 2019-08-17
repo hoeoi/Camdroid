@@ -197,6 +197,7 @@ public class CameraActivity extends Activity implements OnCameraPreviewListener,
         ViewGroup frameLayout = (ViewGroup)this.findViewById(R.id.frameLayout);
 
         lgbTrack = new LgbTrack(frameLayout, 1440,1080);
+        lgbTrack.timeout = 3;
         lgbTrack.setCallback(this);
         this.mPreview.addCameraFrameListener(this);
     }
@@ -371,7 +372,7 @@ public class CameraActivity extends Activity implements OnCameraPreviewListener,
 
     @Override
     public void onCameraPreviewFrame(byte[] data, int previewFormat) {
-        this.lgbTrack.processImage(data);
+        this.lgbTrack.processImage(data,0);
     }
 
     @Override
@@ -387,5 +388,10 @@ public class CameraActivity extends Activity implements OnCameraPreviewListener,
     @Override
     public void didTrackControl(int yaw, int pitch) {
         Log.e("LgbTrack","yaw:" +yaw+ "pitch:"+pitch);
+    }
+
+    @Override
+    public void didTargetLost() {
+        Log.e("LgbTrack","目标丢失");
     }
 }

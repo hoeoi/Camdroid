@@ -93,7 +93,7 @@ public class CameraPreviewView extends ViewGroup implements PreviewCallback,
         // Open the default i.e. the first rear facing camera.
         int cameraIndex = CameraManager.firstBackFacingCamera();
         this.mCamera = CameraManager.openCamera(cameraIndex);
-        mCamera.setDisplayOrientation(180);
+        mCamera.setDisplayOrientation(0);
         if (this.mCamera == null) {
             return;
         }

@@ -6,4 +6,5 @@ package com.hoeoi.lgbTrack;
 
 public interface LgbTrackCallback {
      public void didTrackControl(int yaw, int pitch);
+     public void didTargetLost();
 }
