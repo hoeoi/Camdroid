@@ -68,12 +68,18 @@ public class TrackView extends FrameLayout {
             case MotionEvent.ACTION_MOVE:
                 //移动
                 Log.d("TrackView:","touch ACTION_MOVE");
-                doDrawRect(new Rect((int) touchOriginX,(int) touchOriginY,(int) touchX,(int) touchY));
+                doDrawRect(new Rect((int)((touchX - this.touchOriginX > 0) ? this.touchOriginX : touchX),
+                        (int)((touchY - this.touchOriginY > 0) ? this.touchOriginY : touchY),
+                        (int)((touchX - this.touchOriginX > 0) ? touchX : this.touchOriginX),
+                        (int)((touchY - this.touchOriginY > 0) ? touchY : this.touchOriginY)));
                 break;
             case MotionEvent.ACTION_UP:
                 //松开
                 if (callback != null){
-                    callback.trackViewDidSelectTarget(new Rect((int) touchOriginX, (int) touchOriginY, (int) touchX, (int) touchY));
+                    callback.trackViewDidSelectTarget(new Rect((int)((touchX - this.touchOriginX > 0) ? this.touchOriginX : touchX),
+                            (int)((touchY - this.touchOriginY > 0) ? this.touchOriginY : touchY),
+                            (int)((touchX - this.touchOriginX > 0) ? touchX : this.touchOriginX),
+                            (int)((touchY - this.touchOriginY > 0) ? touchY : this.touchOriginY)));
                 }
                 Log.d("TrackView:","touch ACTION_UP");
                 break;
